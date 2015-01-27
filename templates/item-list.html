@@ -1,0 +1,11 @@
+<ul>
+    $for(items)$
+        <li>
+            $if(date)$
+            <a href="$url$">$title$</a> - $date$
+            $else$
+            <a href="$url$">$title$</a>
+            $endif$
+        </li>
+    $endfor$
+</ul>
