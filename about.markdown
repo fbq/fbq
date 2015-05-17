@@ -20,3 +20,8 @@ programming languages(Theories and Implementations, i.e., compilers or interpret
 and mathematics. I think everyone has his or her rights to use the life, and I want
 to use it as a journey for truth. So the title of the blog, 朝闻道, is a good discription
 for my attitude towards life.
+
+## Contact
+irc & telegram: fixme
+
+mail & GPG: D870877E

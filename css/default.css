@@ -2,7 +2,7 @@ body {
     color: black;
     font-size: 16px;
     margin: 0px auto 0px auto;
-    width: 800px;
+    width: 1000px;
 }
 
 div#header {
@@ -47,6 +47,10 @@ h1 {
 
 h2 {
     font-size: 20px;
+}
+
+th, td {
+    border: 1px solid black;
 }
 
 div.info {

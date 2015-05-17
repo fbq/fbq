@@ -13,7 +13,7 @@ description :: String
 description = "For the Eureka!"
 
 host :: String
-host = "blog.fixme.name"
+host = "fbq.github.io"
 
 authorName :: String
 authorName = "Boqun Feng"
@@ -27,8 +27,12 @@ myFeedConfiguration = FeedConfiguration
     , feedDescription = description
     , feedAuthorName  = authorName
     , feedAuthorEmail = authorEmail
-    , feedRoot        = "http://" ++ host
+    , feedRoot        = "https://" ++ host
     }
+
+-- hakyll's configuration
+config :: Configuration
+config = defaultConfiguration
 
 -- add "date" to post context
 postCtx :: Context String
@@ -62,6 +66,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             -- save a snaphot for feed
             >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/comment.html" postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -77,6 +82,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/note.html"    postCtx
+            >>= loadAndApplyTemplate "templates/comment.html" postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -112,7 +118,6 @@ main = hakyll $ do
             posts <- recentFirst =<<
                 loadAllSnapshots "posts/*" "content"
             renderAtom myFeedConfiguration feedCtx posts
-
 
 --------------------------------------------------------------------------------
 makeListItem :: [Item a]-> Context a -> String -> Identifier -> Compiler (Item String)
